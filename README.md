@@ -16,6 +16,7 @@ wip so no proper readme for now lol
 - takes screenshot (`scrot`) and sends it over
 - logs clipboard content
 - grabs network info & external ip
+- grabs .bashrc file
 
 ### how to use
 1. open the script
